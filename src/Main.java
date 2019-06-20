@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -17,20 +16,7 @@ public class Main {
 		}).start();
 
 
-		Employee pavel = new Employee("Pavel Richman", 30);
-		Employee alex = new Employee("Alex Gurik", 40);
-		Employee snow = new Employee("Snow White", 35);
-		Employee spring = new Employee("Spring Springovich", 99);
-		Employee sam = new Employee("Sam Bigman", 50);
-		Employee young = new Employee("Young Ung", 20);
-
-		List<Employee> employees = new ArrayList<>();
-		employees.add(pavel);
-		employees.add(alex);
-		employees.add(snow);
-		employees.add(spring);
-		employees.add(sam);
-		employees.add(young);
+		List<Employee> employees = CreateEmployees.getEmployees();
 
 		//		Collections.sort(employees, new Comparator<Employee>() {
 		//			@Override
@@ -108,6 +94,12 @@ public class Main {
 			System.out.println(integerSupplier.get());
 		}
 
+
+		employees.forEach(employee -> {
+			String lastName = employee.getName().substring(employee.getName().indexOf(" ") + 1);
+			System.out.println("Last name is: " + lastName);
+		});
+
 	}
 
 	public final static String doSomeStringStuff(UpperConcat upperConcat, String str1, String str2) {
@@ -130,32 +122,6 @@ public class Main {
 		}
 	}
 
-}
-
-class Employee {
-	private String name;
-	private int age;
-
-	public Employee(String name, int age) {
-		this.name = name;
-		this.age = age;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
 }
 
 interface UpperConcat {
